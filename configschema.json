@@ -1,0 +1,196 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/Config",
+    "definitions": {
+        "Config": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/PiShockConfig"
+                },
+                {
+                    "$ref": "#/definitions/IntifaceConfig"
+                }
+            ]
+        },
+        "PiShockConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "hapticMode": {
+                    "type": "string",
+                    "const": "pishock"
+                },
+                "piShock": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "mode": {
+                                    "type": "string",
+                                    "const": "shock"
+                                },
+                                "strength": {
+                                    "type": "number"
+                                },
+                                "duration": {
+                                    "type": "number"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "apiKey": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "apiKey",
+                                "code",
+                                "duration",
+                                "mode",
+                                "strength",
+                                "username"
+                            ]
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "mode": {
+                                    "type": "string",
+                                    "const": "vibrate"
+                                },
+                                "strength": {
+                                    "type": "number"
+                                },
+                                "duration": {
+                                    "type": "number"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "apiKey": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "apiKey",
+                                "code",
+                                "duration",
+                                "mode",
+                                "strength",
+                                "username"
+                            ]
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "mode": {
+                                    "type": "string",
+                                    "const": "beep"
+                                },
+                                "duration": {
+                                    "type": "number"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "apiKey": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "apiKey",
+                                "code",
+                                "duration",
+                                "mode",
+                                "username"
+                            ]
+                        }
+                    ]
+                },
+                "$schema": {
+                    "type": "string",
+                    "const": "./configschema.json"
+                },
+                "cooldown": {
+                    "type": "number"
+                },
+                "mode": {
+                    "$ref": "#/definitions/Mode"
+                }
+            },
+            "required": [
+                "$schema",
+                "cooldown",
+                "hapticMode",
+                "mode",
+                "piShock"
+            ]
+        },
+        "Mode": {
+            "type": "string",
+            "enum": [
+                "onHit",
+                "onMiss"
+            ]
+        },
+        "IntifaceConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "hapticMode": {
+                    "type": "string",
+                    "const": "intiface"
+                },
+                "intiface": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "number"
+                        },
+                        "vibrateStrength": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "host",
+                        "port",
+                        "vibrateStrength"
+                    ],
+                    "additionalProperties": false
+                },
+                "$schema": {
+                    "type": "string",
+                    "const": "./configschema.json"
+                },
+                "cooldown": {
+                    "type": "number"
+                },
+                "mode": {
+                    "$ref": "#/definitions/Mode"
+                }
+            },
+            "required": [
+                "$schema",
+                "cooldown",
+                "hapticMode",
+                "intiface",
+                "mode"
+            ]
+        }
+    }
+}

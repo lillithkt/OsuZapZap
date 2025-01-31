@@ -1,0 +1,19 @@
+{
+    "$schema": "./configschema.json",
+    "cooldown": 5,
+    "mode": "onMiss",
+    "hapticMode": "intiface",
+    "piShock": {
+        "username": "username",
+        "apiKey": "get an api key on the website",
+        "code": "a share code for your pishock",
+        "mode": "vibrate",
+        "strength": 100,
+        "duration": 1
+    },
+    "intiface": {
+        "host": "localhost",
+        "port": 12345,
+        "vibrateStrength": 1
+    }
+}
